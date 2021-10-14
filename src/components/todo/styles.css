@@ -1,0 +1,47 @@
+.todo {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgb(136, 136, 136);
+    color: white;
+}
+
+.todo-delete, .todo-complete {
+    background: transparent;
+    border: none;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+.todo-delete:hover, .todo-complete:hover {
+    transform: scale(1.1);
+}
+
+.todo-text {
+    font-weight: bold;
+}
+
+.todo-date {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: whitesmoke;
+}
+
+.skyblue {
+    background: skyblue;
+}
+
+.lavender {
+    background: lavender;
+}
+
+.coral {
+    background: coral;
+}
