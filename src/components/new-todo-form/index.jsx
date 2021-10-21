@@ -1,12 +1,34 @@
 import { useForm } from 'react-hook-form';
 import { Input } from '../input-field';
+import { v1 as uuidv1 } from 'uuid';
+import { useContext } from 'react';
+import { TodosContext } from '../../context/todos-context';
+import { useHistory } from 'react-router-dom';
+
 import "./styles.css";
 
 export const NewTodoForm = () => {
+
+    const todoContext = useContext(TodosContext);
+    let history = useHistory();
+
     const { register, handleSubmit, formState: {errors} } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
+        const todo = data;
+
+        // add a unique id to the todo
+        todo.id = uuidv1();
+
+        // default status is false
+        todo.isComplete = false;
+
+        // add the todo to the global state
+        todoContext.addTodo(todo);
+        console.log("Added new todo", todo);
+
+        // navigate to the home page
+        history.push("/");
     }
 
     return (
@@ -21,7 +43,7 @@ export const NewTodoForm = () => {
                 validationSchema={
                     {
                         required: "Todo text is required",
-                        minLenght: {
+                        minLength: {
                             value: 3,
                             message: "Please enter at least 3 characters"
                         }
